@@ -29,7 +29,7 @@ export default function PurchaseModule() {
           >
             <div className="aspect-square bg-[#111] rounded-2xl overflow-hidden relative">
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/d87974faa_brkn1_trans.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/4c7d1fdb3_OversizeFleecedHoodie-gallery-2.png"
                 alt="BRKN Tactical Hoodie"
                 className="w-full h-full object-contain p-8"
               />

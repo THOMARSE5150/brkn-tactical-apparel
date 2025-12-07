@@ -38,7 +38,7 @@ export default function Home() {
     // Open Graph
     updateMetaTag('og:title', 'BRKN Tactical Hoodie OPS/01 | Limited Drop', true);
     updateMetaTag('og:description', 'Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, police-cut silhouette. Impossible is just something you do.', true);
-    updateMetaTag('og:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png', true);
+    updateMetaTag('og:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png', true);
     updateMetaTag('og:type', 'product', true);
     updateMetaTag('og:site_name', 'BRKN', true);
     
@@ -46,14 +46,14 @@ export default function Home() {
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', 'BRKN Tactical Hoodie OPS/01');
     updateMetaTag('twitter:description', 'Oversized tactical hoodie by BRKN // B///C1. Limited drop.');
-    updateMetaTag('twitter:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png');
+    updateMetaTag('twitter:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png');
 
     // JSON-LD Schema
     const jsonLdSchema = {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "BRKN Tactical Hoodie (OPS/01)",
-      "image": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png",
+      "image": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png",
       "description": "Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, black-ops tonal branding, police-cut silhouette.",
       "sku": "OPS01-HOODIE",
       "brand": {

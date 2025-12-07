@@ -121,7 +121,7 @@ export default function HeroSection({ onViewDetails, onAddToCart }) {
               <div className="absolute inset-0 bg-gradient-radial from-[#6C7A6F]/10 to-transparent blur-3xl" />
               
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png"
                 alt="BRKN Tactical Hoodie OPS/01"
                 className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
               />
