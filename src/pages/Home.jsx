@@ -16,10 +16,38 @@ export default function Home() {
     }
   };
 
-  // Set document title and inject SEO meta tags
+  // Set page title and meta tags
   useEffect(() => {
-    document.title = "BRKN Tactical Hoodie OPS/01 | B///C1 Limited Drop";
+    document.title = 'BRKN Tactical Hoodie OPS/01 | B///C1 Limited Drop';
     
+    // Create or update meta tags
+    const updateMetaTag = (name, content, isProperty = false) => {
+      const attribute = isProperty ? 'property' : 'name';
+      let tag = document.querySelector(`meta[${attribute}="${name}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attribute, name);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    };
+
+    updateMetaTag('description', 'Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, black-ops tonal branding, police-cut silhouette. Limited drop OPS/01.');
+    updateMetaTag('keywords', 'BRKN, tactical hoodie, oversized hoodie, streetwear, black ops, B///C1, OPS/01');
+    
+    // Open Graph
+    updateMetaTag('og:title', 'BRKN Tactical Hoodie OPS/01 | Limited Drop', true);
+    updateMetaTag('og:description', 'Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, police-cut silhouette. Impossible is just something you do.', true);
+    updateMetaTag('og:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png', true);
+    updateMetaTag('og:type', 'product', true);
+    updateMetaTag('og:site_name', 'BRKN', true);
+    
+    // Twitter Card
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', 'BRKN Tactical Hoodie OPS/01');
+    updateMetaTag('twitter:description', 'Oversized tactical hoodie by BRKN // B///C1. Limited drop.');
+    updateMetaTag('twitter:image', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png');
+
     // JSON-LD Schema
     const jsonLdSchema = {
       "@context": "https://schema.org",
@@ -41,56 +69,13 @@ export default function Home() {
       }
     };
 
-    // Inject JSON-LD
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) existingScript.remove();
-    
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(jsonLdSchema);
-    document.head.appendChild(script);
-
-    // Meta tags
-    const metaTags = [
-      { name: 'description', content: 'Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, black-ops tonal branding, police-cut silhouette. Limited drop OPS/01.' },
-      { name: 'keywords', content: 'BRKN, tactical hoodie, oversized hoodie, streetwear, black ops, B///C1, OPS/01' },
-      { property: 'og:title', content: 'BRKN Tactical Hoodie OPS/01 | Limited Drop' },
-      { property: 'og:description', content: 'Oversized tactical hoodie by BRKN // B///C1. Heavyweight fleece, police-cut silhouette. Impossible is just something you do.' },
-      { property: 'og:image', content: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png' },
-      { property: 'og:url', content: 'https://yourdomain.com/ops01' },
-      { property: 'og:type', content: 'product' },
-      { property: 'og:site_name', content: 'BRKN' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'BRKN Tactical Hoodie OPS/01' },
-      { name: 'twitter:description', content: 'Oversized tactical hoodie by BRKN // B///C1. Limited drop.' },
-      { name: 'twitter:image', content: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/3551d08d3_brkn1.png' },
-    ];
-
-    metaTags.forEach(tag => {
-      const selector = tag.name ? `meta[name="${tag.name}"]` : `meta[property="${tag.property}"]`;
-      let meta = document.querySelector(selector);
-      if (!meta) {
-        meta = document.createElement('meta');
-        if (tag.name) meta.setAttribute('name', tag.name);
-        if (tag.property) meta.setAttribute('property', tag.property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', tag.content);
-    });
-
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+    let scriptTag = document.querySelector('script[type="application/ld+json"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.type = 'application/ld+json';
+      document.head.appendChild(scriptTag);
     }
-    canonical.setAttribute('href', 'https://yourdomain.com/ops01');
-
-    return () => {
-      const injectedScript = document.querySelector('script[type="application/ld+json"]');
-      if (injectedScript) injectedScript.remove();
-    };
+    scriptTag.textContent = JSON.stringify(jsonLdSchema);
   }, []);
 
   return (
