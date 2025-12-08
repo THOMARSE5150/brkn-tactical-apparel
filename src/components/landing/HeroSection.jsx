@@ -56,23 +56,20 @@ export default function HeroSection({ onViewDetails, onAddToCart }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-xl md:text-2xl text-[#CCCCCC] max-w-xl leading-relaxed mb-8"
+            className="text-xl md:text-2xl text-[#CCCCCC] max-w-xl leading-relaxed mb-4"
           >
             Oversized police-cut hoodie built for the broken & the unbreakable.
           </motion.p>
 
-          {/* Mantra */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-            className="mb-12 relative pl-4"
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-sm md:text-base text-[#6C7A6F] font-mono tracking-wide mb-12"
           >
-            <div className="absolute left-0 top-1 bottom-1 w-0.5 bg-gradient-to-b from-[#6C7A6F] to-transparent" />
-            <p className="text-base md:text-lg font-medium text-[#E6E6E6] leading-relaxed italic">
-              "Impossible is just something you do."
-            </p>
-          </motion.div>
+            "Impossible is just something you do."
+          </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
