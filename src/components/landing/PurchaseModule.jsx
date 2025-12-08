@@ -69,14 +69,14 @@ export default function PurchaseModule() {
 
               {/* Size selector */}
               <div className="mb-6">
-                <label className="text-sm text-[#9A9A9A] mb-3 block font-mono tracking-wide">
+                <label className="text-sm text-[#CCCCCC] mb-3 block font-mono tracking-wide uppercase">
                   SELECT SIZE
                 </label>
                 <Select value={selectedSize} onValueChange={setSelectedSize}>
-                  <SelectTrigger className="w-full bg-[#0A0A0A] border-[#2A2A2A] text-white h-14 text-lg hover:border-[#6C7A6F]/50 transition-colors">
-                    <SelectValue placeholder="Choose your size" />
+                  <SelectTrigger className="w-full bg-[#0A0A0A] border-2 border-[#3A3A3A] text-[#E6E6E6] h-14 text-lg hover:border-[#6C7A6F] transition-colors">
+                    <SelectValue placeholder="Choose your size" className="text-[#E6E6E6]" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#1A1A1A] border-[#2A2A2A]">
+                  <SelectContent className="bg-[#1A1A1A] border-[#3A3A3A]">
                     {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
                       <SelectItem 
                         key={size} 
@@ -120,9 +120,9 @@ export default function PurchaseModule() {
               </Button>
 
               {/* Shipping note */}
-              <div className="mt-6 p-4 bg-[#0A0A0A] rounded-xl">
-                <p className="text-[#9A9A9A] text-sm flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#6C7A6F]" />
+              <div className="mt-6 p-4 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
+                <p className="text-[#BBBBBB] text-sm flex items-center gap-2">
+                  <Truck className="w-5 h-5 text-[#6C7A6F]" />
                   Ships via Tapstitch (Global Fulfilment)
                 </p>
               </div>
@@ -130,16 +130,22 @@ export default function PurchaseModule() {
               {/* Trust badges */}
               <div className="mt-8 pt-6 border-t border-[#2A2A2A] grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <Shield className="w-5 h-5 text-[#6C7A6F] mx-auto mb-2" />
-                  <p className="text-xs text-[#6A6A6A]">Secure Payment</p>
+                  <div className="w-10 h-10 rounded-lg bg-[#6C7A6F]/10 flex items-center justify-center mx-auto mb-2">
+                    <Shield className="w-5 h-5 text-[#6C7A6F]" />
+                  </div>
+                  <p className="text-xs text-[#AAAAAA] font-medium">Secure Payment</p>
                 </div>
                 <div className="text-center">
-                  <Truck className="w-5 h-5 text-[#6C7A6F] mx-auto mb-2" />
-                  <p className="text-xs text-[#6A6A6A]">Global Shipping</p>
+                  <div className="w-10 h-10 rounded-lg bg-[#6C7A6F]/10 flex items-center justify-center mx-auto mb-2">
+                    <Truck className="w-5 h-5 text-[#6C7A6F]" />
+                  </div>
+                  <p className="text-xs text-[#AAAAAA] font-medium">Global Shipping</p>
                 </div>
                 <div className="text-center">
-                  <Clock className="w-5 h-5 text-[#6C7A6F] mx-auto mb-2" />
-                  <p className="text-xs text-[#6A6A6A]">Made to Order</p>
+                  <div className="w-10 h-10 rounded-lg bg-[#6C7A6F]/10 flex items-center justify-center mx-auto mb-2">
+                    <Clock className="w-5 h-5 text-[#6C7A6F]" />
+                  </div>
+                  <p className="text-xs text-[#AAAAAA] font-medium">Made to Order</p>
                 </div>
               </div>
             </div>
