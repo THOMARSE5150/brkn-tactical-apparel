@@ -66,13 +66,11 @@ export default function HeroSection({ onViewDetails, onAddToCart }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="mb-12 relative"
+            className="mb-12 relative pl-4"
           >
-            <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#6C7A6F] to-transparent" />
-            <p className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
-              "Impossible is just
-              <br />
-              <span className="text-[#6C7A6F]">something you do</span>."
+            <div className="absolute left-0 top-1 bottom-1 w-0.5 bg-gradient-to-b from-[#6C7A6F] to-transparent" />
+            <p className="text-base md:text-lg font-medium text-[#E6E6E6] leading-relaxed italic">
+              "Impossible is just something you do."
             </p>
           </motion.div>
 
