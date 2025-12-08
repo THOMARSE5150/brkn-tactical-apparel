@@ -58,7 +58,7 @@ export default function HeroSection({ onViewDetails, onAddToCart }) {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl md:text-2xl text-[#CCCCCC] max-w-xl leading-relaxed mb-4"
           >
-            Oversized police-cut hoodie built for the broken & the unbreakable.
+            Oversized tactical hoodie built for the broken & the unbreakable.
           </motion.p>
 
           {/* Tagline */}

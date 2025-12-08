@@ -6,7 +6,7 @@ const features = [
   {
     icon: Shield,
     title: "Oversized Tactical Fit",
-    description: "Inspired by police training gear",
+    description: "Premium heavyweight fleece construction",
     size: "large"
   },
   {
