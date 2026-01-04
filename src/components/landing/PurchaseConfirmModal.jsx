@@ -31,12 +31,17 @@ export default function PurchaseConfirmModal({ isOpen, onClose, selectedSize }) 
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-50 p-6"
           >
             <div className="bg-[#111] border-2 border-[#2A2A2A] rounded-2xl p-8 relative">
+              {/* Pull indicator - mobile only */}
+              <div className="sm:hidden flex justify-center mb-2 -mt-2">
+                <div className="w-10 h-1 bg-[#3A3A3A] rounded-full" />
+              </div>
+
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#2A2A2A] hover:bg-[#3A3A3A] flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#2A2A2A] active:bg-[#3A3A3A] sm:hover:bg-[#3A3A3A] flex items-center justify-center transition-colors"
               >
-                <X className="w-4 h-4 text-white" />
+                <X className="w-5 h-5 text-white" />
               </button>
 
               {/* Icon */}
