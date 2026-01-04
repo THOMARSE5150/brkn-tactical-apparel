@@ -83,13 +83,13 @@ export default function AgentChat() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed bottom-8 right-8 z-40"
+            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40"
           >
             <Button
               onClick={() => setIsOpen(true)}
-              className="h-16 w-16 rounded-full bg-white text-black hover:bg-[#6C7A6F] hover:text-white shadow-2xl transition-all duration-300"
+              className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white text-black hover:bg-[#6C7A6F] hover:text-white shadow-2xl transition-all duration-300"
             >
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
             </Button>
           </motion.div>
         )}
@@ -103,24 +103,24 @@ export default function AgentChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-8 right-8 w-[400px] h-[600px] bg-[#111] border-2 border-[#2A2A2A] rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-0 right-0 sm:bottom-8 sm:right-8 w-full sm:w-[400px] h-[100dvh] sm:h-[600px] sm:max-h-[80vh] bg-[#111] border-2 border-[#2A2A2A] sm:rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[#0A0A0A] border-b border-[#2A2A2A] px-6 py-4 flex items-center justify-between">
+            <div className="bg-[#0A0A0A] border-b border-[#2A2A2A] px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
               <div>
-                <h3 className="text-white font-semibold">BRKN Support</h3>
+                <h3 className="text-white font-semibold text-sm sm:text-base">BRKN Support</h3>
                 <p className="text-[#6A6A6A] text-xs font-mono">OPS/01 Product Specialist</p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full bg-[#2A2A2A] hover:bg-[#3A3A3A] flex items-center justify-center transition-colors"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#2A2A2A] hover:bg-[#3A3A3A] flex items-center justify-center transition-colors flex-shrink-0"
               >
                 <X className="w-4 h-4 text-white" />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+            <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-3 sm:space-y-4">
               {messages.length === 0 && (
                 <div className="text-center text-[#6A6A6A] text-sm mt-8">
                   <p className="mb-2">👋 Welcome to BRKN</p>
@@ -134,20 +134,20 @@ export default function AgentChat() {
             </div>
 
             {/* Input */}
-            <div className="bg-[#0A0A0A] border-t border-[#2A2A2A] px-4 py-4">
+            <div className="bg-[#0A0A0A] border-t border-[#2A2A2A] px-3 sm:px-4 py-3 sm:py-4 safe-area-inset-bottom">
               <div className="flex gap-2">
                 <Input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about sizing, materials, fit..."
+                  placeholder="Ask about sizing, materials..."
                   disabled={isLoading || !conversation}
-                  className="bg-[#1A1A1A] border-[#2A2A2A] text-white placeholder:text-[#6A6A6A] focus:border-[#6C7A6F]"
+                  className="bg-[#1A1A1A] border-[#2A2A2A] text-white placeholder:text-[#6A6A6A] focus:border-[#6C7A6F] text-sm"
                 />
                 <Button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim() || isLoading || !conversation}
-                  className="bg-white text-black hover:bg-[#6C7A6F] hover:text-white transition-colors"
+                  className="bg-white text-black hover:bg-[#6C7A6F] hover:text-white transition-colors flex-shrink-0"
                 >
                   {isLoading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
