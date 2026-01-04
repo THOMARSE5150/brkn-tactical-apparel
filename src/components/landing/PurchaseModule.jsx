@@ -69,15 +69,23 @@ export default function PurchaseModule() {
 
               {/* Size selector */}
               <div className="mb-6">
-                <label className="text-sm text-[#CCCCCC] mb-3 block font-mono tracking-wide uppercase">
-                  SELECT SIZE
-                </label>
+                <div className="flex items-center justify-between mb-3">
+                  <label className="text-sm text-[#CCCCCC] font-mono tracking-wide uppercase">
+                    SELECT SIZE
+                  </label>
+                  <a 
+                    href="#sizing" 
+                    className="text-xs text-[#6C7A6F] hover:text-white transition-colors font-mono tracking-wider"
+                  >
+                    SIZE GUIDE →
+                  </a>
+                </div>
                 <Select value={selectedSize} onValueChange={setSelectedSize}>
                   <SelectTrigger className="w-full bg-[#0A0A0A] border-2 border-[#3A3A3A] text-[#E6E6E6] h-14 text-lg hover:border-[#6C7A6F] transition-colors">
                     <SelectValue placeholder="Choose your size" className="text-[#E6E6E6]" />
                   </SelectTrigger>
                   <SelectContent className="bg-[#1A1A1A] border-[#3A3A3A]">
-                    {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+                    {['S', 'M', 'L', 'XL', '2XL'].map((size) => (
                       <SelectItem 
                         key={size} 
                         value={size}

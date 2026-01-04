@@ -87,7 +87,9 @@ export default function Home() {
       <FeaturesGrid />
       <ProductGallery />
       <PhilosophySection />
-      <SizingTable />
+      <div id="sizing">
+        <SizingTable />
+      </div>
       <PurchaseModule />
       <FAQSection />
       <Footer />

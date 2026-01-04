@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { Ruler, AlertCircle } from 'lucide-react';
 
 const sizes = [
-  { size: 'S', chest: '118', length: '70', shoulder: '62', sleeve: '56' },
-  { size: 'M', chest: '124', length: '72', shoulder: '64', sleeve: '57' },
-  { size: 'L', chest: '130', length: '74', shoulder: '66', sleeve: '58' },
-  { size: 'XL', chest: '136', length: '76', shoulder: '68', sleeve: '59' },
-  { size: 'XXL', chest: '142', length: '78', shoulder: '70', sleeve: '60' },
+  { size: 'S', chest: '122', length: '72', shoulder: '63', sleeve: '55' },
+  { size: 'M', chest: '127', length: '74', shoulder: '65', sleeve: '56' },
+  { size: 'L', chest: '132', length: '76', shoulder: '67', sleeve: '57' },
+  { size: 'XL', chest: '137', length: '78', shoulder: '69', sleeve: '58' },
+  { size: '2XL', chest: '142', length: '80', shoulder: '71', sleeve: '59' },
 ];
 
 export default function SizingTable() {
@@ -33,19 +33,33 @@ export default function SizingTable() {
           </h2>
         </motion.div>
 
-        {/* Sizing Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-8 p-4 bg-[#6C7A6F]/10 border border-[#6C7A6F]/20 rounded-xl flex items-start gap-3"
-        >
-          <AlertCircle className="w-5 h-5 text-[#6C7A6F] flex-shrink-0 mt-0.5" />
-          <p className="text-[#E6E6E6] text-sm">
-            <span className="font-semibold">Oversized cut</span> — if you prefer a standard fit, size down.
-          </p>
-        </motion.div>
+        {/* Sizing Notes */}
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-4 bg-[#6C7A6F]/10 border border-[#6C7A6F]/20 rounded-xl flex items-start gap-3"
+          >
+            <AlertCircle className="w-5 h-5 text-[#6C7A6F] flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[#E6E6E6] text-sm font-semibold mb-1">Oversized Fit</p>
+              <p className="text-[#BBBBBB] text-xs">For a more fitted look, we recommend sizing down.</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="p-4 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl"
+          >
+            <p className="text-[#E6E6E6] text-sm font-semibold mb-1">Fabric Specs</p>
+            <p className="text-[#BBBBBB] text-xs">42% Cotton, 53% Polyester, 5% Others • 350 GSM • Slight Stretch</p>
+          </motion.div>
+        </div>
 
         {/* Table */}
         <motion.div
@@ -100,16 +114,40 @@ export default function SizingTable() {
           </table>
         </motion.div>
 
-        {/* Measurement note */}
-        <motion.p
+        {/* Measurement notes */}
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 text-[#6A6A6A] text-sm text-center"
+          className="mt-8 space-y-4"
         >
-          All measurements in centimeters. Measured flat.
-        </motion.p>
+          <p className="text-[#AAAAAA] text-sm text-center">
+            All measurements in centimeters. Measured flat, laid out.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-6 mt-6 p-6 bg-[#0A0A0A] rounded-xl border border-[#2A2A2A]">
+            <div>
+              <h4 className="text-[#6C7A6F] text-xs font-mono tracking-wider mb-3">HOW TO MEASURE</h4>
+              <ul className="space-y-2 text-sm text-[#BBBBBB]">
+                <li><span className="text-white">Chest:</span> Measure across the chest 2.5cm below the armhole</li>
+                <li><span className="text-white">Length:</span> Measure from highest point of shoulder to bottom hem</li>
+                <li><span className="text-white">Shoulder:</span> Measure from shoulder seam to shoulder seam</li>
+                <li><span className="text-white">Sleeve:</span> Measure from shoulder seam to cuff edge</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-[#6C7A6F] text-xs font-mono tracking-wider mb-3">CARE INSTRUCTIONS</h4>
+              <ul className="space-y-2 text-sm text-[#BBBBBB]">
+                <li>• Machine wash at 30°C (gentle cycle)</li>
+                <li>• Do not bleach or dry clean</li>
+                <li>• Tumble dry low heat</li>
+                <li>• Iron at low temp, avoid ironing on print</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
