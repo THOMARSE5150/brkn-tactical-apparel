@@ -4,17 +4,15 @@ import { ShoppingBag, Truck, Shield, Clock } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import PurchaseConfirmModal from './PurchaseConfirmModal';
 
 export default function PurchaseModule() {
   const [selectedSize, setSelectedSize] = useState('');
-  const [isAdding, setIsAdding] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleAddToCart = () => {
     if (!selectedSize) return;
-    setIsAdding(true);
-    // Redirect to Tapstitch product page
-    window.open('https://www.tapstitch.com/custom/r00286-oversize-fleeced-hoodie', '_blank');
-    setTimeout(() => setIsAdding(false), 800);
+    setShowModal(true);
   };
 
   return (
@@ -103,7 +101,7 @@ export default function PurchaseModule() {
               {/* Add to Cart button */}
               <Button
                 onClick={handleAddToCart}
-                disabled={!selectedSize || isAdding}
+                disabled={!selectedSize}
                 className={`
                   w-full h-14 text-base font-medium tracking-wider transition-all duration-300
                   ${selectedSize 
@@ -112,21 +110,10 @@ export default function PurchaseModule() {
                   }
                 `}
               >
-                {isAdding ? (
-                  <span className="flex items-center gap-2">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
-                    />
-                    ADDING...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <ShoppingBag className="w-5 h-5" />
-                    ADD TO CART
-                  </span>
-                )}
+                <span className="flex items-center gap-2">
+                  <ShoppingBag className="w-5 h-5" />
+                  ADD TO CART
+                </span>
               </Button>
 
               {/* Shipping note */}
@@ -162,6 +149,13 @@ export default function PurchaseModule() {
           </motion.div>
         </div>
       </div>
+
+      {/* Purchase Confirmation Modal */}
+      <PurchaseConfirmModal 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)}
+        selectedSize={selectedSize}
+      />
     </section>
   );
 }
