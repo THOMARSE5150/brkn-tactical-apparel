@@ -7,6 +7,7 @@ import SizingTable from '@/components/landing/SizingTable';
 import PurchaseModule from '@/components/landing/PurchaseModule';
 import FAQSection from '@/components/landing/FAQSection';
 import Footer from '@/components/landing/Footer';
+import AgentChat from '@/components/landing/AgentChat';
 
 export default function Home() {
   const scrollToSection = (id) => {
@@ -93,6 +94,7 @@ export default function Home() {
       <PurchaseModule />
       <FAQSection />
       <Footer />
+      <AgentChat />
     </div>
   );
-}
+  }
