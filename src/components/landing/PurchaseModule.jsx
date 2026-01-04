@@ -12,7 +12,9 @@ export default function PurchaseModule() {
   const handleAddToCart = () => {
     if (!selectedSize) return;
     setIsAdding(true);
-    setTimeout(() => setIsAdding(false), 1500);
+    // Redirect to Tapstitch product page
+    window.open('https://www.tapstitch.com/custom/r00286-oversize-fleeced-hoodie', '_blank');
+    setTimeout(() => setIsAdding(false), 800);
   };
 
   return (
