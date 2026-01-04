@@ -14,8 +14,8 @@ export default function HeroSection({ onViewDetails, onAddToCart }) {
           className="w-full h-full object-cover object-center"
         />
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </div>
 
       {/* Content */}
