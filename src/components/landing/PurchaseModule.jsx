@@ -63,8 +63,33 @@ export default function PurchaseModule() {
 
               {/* Price */}
               <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-4xl font-bold text-white">$59</span>
+                <span className="text-4xl font-bold text-white">$88</span>
                 <span className="text-[#6A6A6A] text-sm">USD</span>
+              </div>
+
+              {/* Pricing explanation */}
+              <div className="mb-8 p-6 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
+                <h4 className="text-[#E6E6E6] text-sm font-mono tracking-wider uppercase mb-4">
+                  Why it costs what it costs
+                </h4>
+                <ul className="space-y-2.5 text-[#BBBBBB] text-sm leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#6C7A6F] mt-1">•</span>
+                    <span>Heavyweight fabric, built to last</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#6C7A6F] mt-1">•</span>
+                    <span>Small-batch production, not mass volume</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#6C7A6F] mt-1">•</span>
+                    <span>Intentional design, no excess branding</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#6C7A6F] mt-1">•</span>
+                    <span>Fair pricing — premium without exploitation</span>
+                  </li>
+                </ul>
               </div>
 
               {/* Size selector */}
