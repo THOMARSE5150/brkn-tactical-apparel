@@ -63,8 +63,8 @@ export default function PurchaseModule() {
 
               {/* Price */}
               <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-4xl font-bold text-white">$33</span>
-                <span className="text-[#6A6A6A] text-sm">AUD</span>
+                <span className="text-4xl font-bold text-white">$59</span>
+                <span className="text-[#6A6A6A] text-sm">USD</span>
               </div>
 
               {/* Size selector */}
