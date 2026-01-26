@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import PurchaseConfirmModal from './PurchaseConfirmModal';
+import PriceDisplay from './PriceDisplay';
 
 export default function PurchaseModule() {
   const [selectedSize, setSelectedSize] = useState('');
@@ -62,10 +63,7 @@ export default function PurchaseModule() {
               </p>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-4xl font-bold text-white">$88</span>
-                <span className="text-[#6A6A6A] text-sm">USD</span>
-              </div>
+              <PriceDisplay baseUSD={88} className="mb-8" />
 
               {/* Pricing explanation */}
               <div className="mb-8 p-6 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
