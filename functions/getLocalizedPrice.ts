@@ -14,10 +14,26 @@ const CURRENCY_SYMBOLS = {
   NOK: 'kr', DKK: 'kr', PLN: 'zł', CZK: 'Kč', HUF: 'Ft'
 };
 
+// Market-specific pricing strategy (confident whole numbers)
+const MARKET_PRICES = {
+  USD: 75,
+  AUD: 75,
+  EUR: 99,
+  GBP: 105,
+  CAD: 85,
+  NZD: 95,
+  JPY: 8500,
+  SGD: 85,
+  CHF: 70,
+  SEK: 750,
+  NOK: 750,
+  DKK: 525
+};
+
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { priceUSD = 88 } = await req.json();
+    const { priceUSD = 75 } = await req.json();
 
     // Get user's country from IP
     const geoResponse = await fetch('https://ipapi.co/json/');
@@ -25,17 +41,19 @@ Deno.serve(async (req) => {
     const countryCode = geoData.country_code || 'US';
     const currency = CURRENCY_MAP[countryCode] || 'USD';
 
-    // If already USD, return immediately
-    if (currency === 'USD') {
+    // Use market-specific price if available
+    const marketPrice = MARKET_PRICES[currency];
+    
+    if (marketPrice) {
       return Response.json({
-        price: priceUSD,
-        currency: 'USD',
-        symbol: '$',
+        price: marketPrice,
+        currency,
+        symbol: CURRENCY_SYMBOLS[currency] || currency,
         countryCode
       });
     }
 
-    // Get forex rates
+    // Fallback: convert from USD for markets without specific pricing
     const forexResponse = await fetch(`https://api.exchangerate-api.com/v4/latest/USD`);
     const forexData = await forexResponse.json();
     const rate = forexData.rates[currency];
@@ -49,7 +67,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Convert and round to whole number
     const convertedPrice = Math.round(priceUSD * rate);
 
     return Response.json({
@@ -61,7 +78,7 @@ Deno.serve(async (req) => {
 
   } catch (error) {
     return Response.json({
-      price: 88,
+      price: 75,
       currency: 'USD',
       symbol: '$',
       error: error.message

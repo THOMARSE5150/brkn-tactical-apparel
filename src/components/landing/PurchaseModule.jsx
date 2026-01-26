@@ -63,7 +63,7 @@ export default function PurchaseModule() {
               </p>
 
               {/* Price */}
-              <PriceDisplay baseUSD={88} className="mb-8" />
+              <PriceDisplay baseUSD={75} className="mb-8" />
 
               {/* Pricing explanation */}
               <div className="mb-8 p-6 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
