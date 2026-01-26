@@ -1,19 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, Truck, Shield, Clock } from 'lucide-react';
+import { ShoppingBag, Truck, Shield, Clock, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import PurchaseConfirmModal from './PurchaseConfirmModal';
+import { base44 } from "@/api/base44Client";
 import PriceDisplay from './PriceDisplay';
 
 export default function PurchaseModule() {
   const [selectedSize, setSelectedSize] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [localizedPrice, setLocalizedPrice] = useState({ currency: 'USD' });
+  const [isInIframe, setIsInIframe] = useState(false);
 
-  const handleAddToCart = () => {
+  useEffect(() => {
+    setIsInIframe(window.self !== window.top);
+    fetchLocalizedPrice();
+  }, []);
+
+  const fetchLocalizedPrice = async () => {
+    try {
+      const response = await base44.functions.invoke('getLocalizedPrice', { priceUSD: 75 });
+      setLocalizedPrice(response.data);
+    } catch (err) {
+      setLocalizedPrice({ currency: 'USD' });
+    }
+  };
+
+  const handleAddToCart = async () => {
     if (!selectedSize) return;
-    setShowModal(true);
+    
+    if (isInIframe) {
+      setError('Checkout must be opened from the published app, not the preview.');
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const origin = window.location.origin;
+      const response = await base44.functions.invoke('createCheckout', {
+        size: selectedSize,
+        currency: localizedPrice.currency,
+        successUrl: `${origin}/?payment=success`,
+        cancelUrl: `${origin}/?payment=cancelled`
+      });
+
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      } else {
+        setError('Failed to create checkout session');
+      }
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -121,29 +165,44 @@ export default function PurchaseModule() {
                 </Select>
               </div>
 
+              {/* Error message */}
+              {error && (
+                <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-2">
+                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-400">{error}</p>
+                </div>
+              )}
+
               {/* Add to Cart button */}
               <Button
                 onClick={handleAddToCart}
-                disabled={!selectedSize}
+                disabled={!selectedSize || isLoading}
                 className={`
                   w-full h-14 text-base font-medium tracking-wider transition-all duration-300
-                  ${selectedSize 
+                  ${selectedSize && !isLoading
                     ? 'bg-white text-black hover:bg-[#6C7A6F] hover:text-white' 
                     : 'bg-[#2A2A2A] text-[#6A6A6A] cursor-not-allowed'
                   }
                 `}
               >
-                <span className="flex items-center gap-2">
-                  <ShoppingBag className="w-5 h-5" />
-                  ADD TO CART
-                </span>
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Processing...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <ShoppingBag className="w-5 h-5" />
+                    CHECKOUT NOW
+                  </span>
+                )}
               </Button>
 
               {/* Shipping note */}
               <div className="mt-6 p-4 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl">
                 <p className="text-[#BBBBBB] text-sm flex items-center gap-2">
                   <Truck className="w-5 h-5 text-[#6C7A6F]" />
-                  Ships via Tapstitch (Global Fulfilment)
+                  Secure checkout via Stripe • Global shipping available
                 </p>
               </div>
 
@@ -171,14 +230,7 @@ export default function PurchaseModule() {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Purchase Confirmation Modal */}
-      <PurchaseConfirmModal 
-        isOpen={showModal} 
-        onClose={() => setShowModal(false)}
-        selectedSize={selectedSize}
-      />
-    </section>
-  );
-}
+        </div>
+        </section>
+        );
+        }
