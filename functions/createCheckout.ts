@@ -16,15 +16,15 @@ const PRICE_IDS = {
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { size, currency = 'USD', successUrl, cancelUrl } = await req.json();
+    const { size, currency = 'USD' } = await req.json();
 
     if (!size) {
       return Response.json({ error: 'Size is required' }, { status: 400 });
     }
 
-    if (!successUrl || !cancelUrl) {
-      return Response.json({ error: 'Success and cancel URLs are required' }, { status: 400 });
-    }
+    const origin = 'https://brknc1.base44.app';
+    const successUrl = `${origin}/checkout/success`;
+    const cancelUrl = `${origin}/checkout/cancel`;
 
     const priceId = PRICE_IDS[currency] || PRICE_IDS.USD;
 

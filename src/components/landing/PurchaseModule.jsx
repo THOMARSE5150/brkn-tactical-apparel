@@ -40,12 +40,9 @@ export default function PurchaseModule() {
     setError('');
 
     try {
-      const origin = window.location.origin;
       const response = await base44.functions.invoke('createCheckout', {
         size: selectedSize,
-        currency: localizedPrice.currency,
-        successUrl: `${origin}/?payment=success`,
-        cancelUrl: `${origin}/?payment=cancelled`
+        currency: localizedPrice.currency
       });
 
       if (response.data.url) {

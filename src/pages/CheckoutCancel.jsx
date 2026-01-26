@@ -1,11 +1,19 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import { motion } from 'framer-motion';
 import { XCircle, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export default function CheckoutCancel() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-6">
+    <>
+      <Helmet>
+        <title>Checkout Cancelled — BRKN</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brknc1.base44.app/checkout/cancel" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -57,5 +65,6 @@ export default function CheckoutCancel() {
         </Button>
       </motion.div>
     </div>
+    </>
   );
 }

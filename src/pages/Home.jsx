@@ -19,18 +19,18 @@ export default function Home() {
     }
   };
 
-  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://YOURDOMAIN.com";
+  const siteOrigin = "https://brknc1.base44.app";
 
   const jsonLdSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "BRKN OPS/01 Oversize Hoodie",
+    "name": "BRKN OPS/01 Tactical Hoodie",
     "brand": { "@type": "Brand", "name": "BRKN" },
-    "description": "OPS/01 by BRKN. Oversize fleeced hoodie engineered for daily wear. Limited drop.",
+    "description": "OPS/01 — Limited tactical apparel release. Oversize fleeced hoodie built for daily wear.",
     "image": ["https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png"],
     "offers": {
       "@type": "Offer",
-      "url": siteOrigin + "/",
+      "url": "https://brknc1.base44.app/",
       "priceCurrency": "USD",
       "price": "75.00",
       "availability": "https://schema.org/InStock"
@@ -40,20 +40,21 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>BRKN — OPS/01 Oversize Hoodie</title>
-        <meta name="description" content="OPS/01 by BRKN. Oversize fleeced hoodie engineered for daily wear. Limited drop. Move forward anyway." />
-        <link rel="canonical" href={siteOrigin + "/"} />
+        <title>OPS/01 — BRKN Tactical Apparel</title>
+        <meta name="description" content="OPS/01 — Limited tactical apparel release. Oversize fleeced hoodie built to be worn. Not explained." />
+        <link rel="canonical" href="https://brknc1.base44.app/" />
         
         <meta property="og:type" content="product" />
-        <meta property="og:title" content="BRKN — OPS/01 Oversize Hoodie" />
-        <meta property="og:description" content="OPS/01 by BRKN. Oversize fleeced hoodie engineered for daily wear. Limited drop." />
+        <meta property="og:title" content="OPS/01 — BRKN Tactical Apparel" />
+        <meta property="og:description" content="OPS/01 — Limited tactical apparel release. Built to be worn. Not explained." />
         <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png" />
-        <meta property="og:url" content={siteOrigin + "/"} />
+        <meta property="og:url" content="https://brknc1.base44.app/" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="BRKN — OPS/01 Oversize Hoodie" />
-        <meta name="twitter:description" content="OPS/01 by BRKN. Oversize fleeced hoodie engineered for daily wear. Limited drop." />
+        <meta name="twitter:title" content="OPS/01 — BRKN Tactical Apparel" />
+        <meta name="twitter:description" content="OPS/01 — Limited tactical apparel release. Built to be worn. Not explained." />
         <meta name="twitter:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/a9d6542d8_OversizeFleecedHoodie-gallery-1.png" />
+        <meta name="robots" content="index, follow" />
         
         <script type="application/ld+json">
           {JSON.stringify(jsonLdSchema)}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,14 @@ export default function CheckoutSuccess() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-6">
+    <>
+      <Helmet>
+        <title>Order Confirmed — BRKN</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brknc1.base44.app/checkout/success" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -68,5 +76,6 @@ export default function CheckoutSuccess() {
         </Button>
       </motion.div>
     </div>
+    </>
   );
 }
