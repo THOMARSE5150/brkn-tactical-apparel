@@ -8,7 +8,7 @@ export const OPS01 = {
   currency: "USD",
   availability: "InStock",
   canonicalPath: "/",
-  price: 59,
+  price: 75,
   tapstitchUrl: "https://www.tapstitch.com/custom/r00286-oversize-fleeced-hoodie",
   images: {
     hero: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_68878505f4453e0cc2ffa7c2/623b0b28b_OversizeFleecedHoodie-gallery-3.png",

@@ -32,7 +32,7 @@ export default function Home() {
       "@type": "Offer",
       "url": siteOrigin + "/",
       "priceCurrency": "USD",
-      "price": "88.00",
+      "price": "75.00",
       "availability": "https://schema.org/InStock"
     }
   };
