@@ -2,10 +2,11 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Check } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { OPS01 } from './ops01Config';
 
 export default function PurchaseConfirmModal({ isOpen, onClose, selectedSize }) {
   const handleProceed = () => {
-    window.open('https://www.tapstitch.com/custom/r00286-oversize-fleeced-hoodie', '_blank');
+    window.open(OPS01.tapstitchUrl, '_blank');
     onClose();
   };
 
