@@ -1,0 +1,87 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "customer_email": {
+      "type": "string",
+      "description": "Customer email address"
+    },
+    "customer_name": {
+      "type": "string",
+      "description": "Customer full name"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "Selected size"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code (USD, AUD, EUR, GBP, etc.)"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount paid in the currency"
+    },
+    "stripe_session_id": {
+      "type": "string",
+      "description": "Stripe checkout session ID"
+    },
+    "stripe_payment_intent": {
+      "type": "string",
+      "description": "Stripe payment intent ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "paid",
+        "fulfilled",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Order status"
+    },
+    "shipping_address": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "type": "string"
+        },
+        "line2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes or customer message"
+    }
+  },
+  "required": [
+    "customer_email",
+    "size",
+    "currency",
+    "amount",
+    "stripe_session_id",
+    "status"
+  ]
+}
